@@ -20,9 +20,107 @@
 body {
   font-family: "Red Hat Text", sans-serif;
   background-color: var(--Rose-100);
+  font-size: 16px;
+  min-height: 100vh;
 }
 
 .main_heading {
   font-size: 2rem;
   color: var(--Rose-900);
+}
+
+.food_section {
+  border: 2px solid red;
+}
+
+.food-item {
+  border: 2px solid yellow;
+}
+
+.food-item__image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+}
+
+.food-item__add-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.add-section p {
+  font-size: 1rem;
+  color: var(--Rose-900);
+  font-weight: bold;
+}
+
+.quantity-controls {
+  display: flex;
+  padding: 0;
+  gap: 2.5rem;
+  padding: 1rem 1.1rem;
+  flex-direction: row;
+  background-color: var(--Red);
+  border-radius: 50px;
+}
+
+.quantity-controls p {
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--Rose-100);
+}
+
+.food-item__button {
+  width: 25px;
+  height: 25px;
+  border: 2px solid var(--Rose-100);
+  border-radius: 50%;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--Red);
+}
+
+.increment {
+  margin-left: 1rem;
+}
+.decrement {
+  margin-right: 1rem;
+}
+
+.item_class {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.food-item__category {
+  color: var(--Rose-400);
+  font-size: 0.9rem;
+}
+
+.food-item__name {
+  color: var(--Rose-900);
+  font-weight: 600;
+}
+
+.fodd-item__price {
+  color: var(--Red);
+  font-weight: 600;
 }
