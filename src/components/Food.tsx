@@ -1,5 +1,5 @@
 import React from "react";
-import device from "../hooks/useDevicetype";
+import useDevicetype from "../hooks/useDeviceType";
 import addToCart from "/assets/images/icon-add-to-cart.svg";
 import decrementButton from "/assets/images/icon-decrement-quantity.svg";
 import incrementButton from "/assets/images/icon-increment-quantity.svg";
@@ -21,6 +21,7 @@ const Food: React.FC<FoodProps> = ({
   desktopImage,
 }) => {
   let imageSrc = mobileImage;
+  const device = useDevicetype();
   if (device === "tablet") {
     imageSrc = tabletImage;
   } else if (device === "desktop") {
