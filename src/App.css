@@ -25,21 +25,17 @@ body {
 }
 
 .main_heading {
-  font-size: 2rem;
+  font-size: 3rem;
   color: var(--Rose-900);
 }
 
 .food_section {
-  border: 2px solid red;
-}
-
-.food-item {
-  border: 2px solid yellow;
+  padding: 1.5rem;
+  position: relative;
 }
 
 .food-item__image {
   width: 100%;
-  max-width: 400px;
   border-radius: 15px;
 }
 
@@ -56,12 +52,15 @@ body {
   flex-direction: row;
   justify-content: center;
   gap: 10px;
-  padding: 1rem 2.5rem;
+  padding: 1.1rem 2.5rem;
   border-radius: 50px;
   cursor: pointer;
   border: none;
   background-color: white;
   border: 1px solid var(--Red);
+  position: absolute;
+  right: 25%;
+  z-index: 999;
 }
 
 .btn:hover {
@@ -77,10 +76,12 @@ body {
   display: flex;
   padding: 0;
   gap: 2.5rem;
-  padding: 1rem 1.1rem;
+  padding: 1rem;
   flex-direction: row;
   background-color: var(--Red);
   border-radius: 50px;
+  position: absolute;
+  right: 25%;
 }
 
 .quantity-controls p {

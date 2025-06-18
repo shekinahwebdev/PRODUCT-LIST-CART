@@ -10,6 +10,7 @@ const FoodContainer = () => {
           name={food.name}
           cathegory={food.category}
           price={food.price}
+          thumbnail={food.image.thumbnail}
           mobileImage={food.image.mobile}
           tabletImage={food.image.tablet}
           desktopImage={food.image.desktop}

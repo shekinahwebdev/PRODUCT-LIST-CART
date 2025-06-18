@@ -1,5 +1,4 @@
 import React from "react";
-import useDevicetype from "../hooks/useDeviceType";
 import addToCart from "/assets/images/icon-add-to-cart.svg";
 interface FoodProps {
   name: string;
@@ -8,6 +7,7 @@ interface FoodProps {
   mobileImage: string;
   tabletImage: string;
   desktopImage: string;
+  thumbnail: string;
 }
 
 const Food: React.FC<FoodProps> = ({
@@ -17,17 +17,19 @@ const Food: React.FC<FoodProps> = ({
   mobileImage,
   tabletImage,
   desktopImage,
+  thumbnail,
 }) => {
-  let imageSrc = mobileImage;
-  const device = useDevicetype();
-  if (device === "tablet") {
-    imageSrc = tabletImage;
-  } else if (device === "desktop") {
-    imageSrc = desktopImage;
-  }
   return (
     <div className="food-item">
-      <img src={imageSrc} alt="" className="food-item__image" />
+      <picture>
+        <source media="(max-width: 767px)" srcSet={mobileImage} />
+        <source
+          media="(min-width: 768px) and (max-width: 1023px)"
+          srcSet={tabletImage}
+        />
+        <source media="(min-width: 1024px)" srcSet={desktopImage} />
+        <img src={thumbnail} alt={name} className="food-item__image" />
+      </picture>
 
       <div className="food-item__add-section">
         <button className="add-section btn">
