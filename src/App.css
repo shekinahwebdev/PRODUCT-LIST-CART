@@ -59,11 +59,17 @@ body {
   padding: 1rem 2.5rem;
   border-radius: 50px;
   cursor: pointer;
+  border: none;
+  background-color: white;
+  border: 1px solid var(--Red);
+}
+
+.btn:hover {
+  color: var(--Red);
 }
 
 .add-section p {
   font-size: 1rem;
-  color: var(--Rose-900);
   font-weight: bold;
 }
 
@@ -123,4 +129,16 @@ body {
 .fodd-item__price {
   color: var(--Red);
   font-weight: 600;
+}
+
+.food-item__button:hover {
+  background-color: var(--Rose-100);
+}
+
+.food-item__button svg {
+  color: white;
+}
+
+.food-item__button:hover svg {
+  color: var(--Red);
 }

@@ -1,8 +1,6 @@
 import React from "react";
 import useDevicetype from "../hooks/useDeviceType";
 import addToCart from "/assets/images/icon-add-to-cart.svg";
-import decrementButton from "/assets/images/icon-decrement-quantity.svg";
-import incrementButton from "/assets/images/icon-increment-quantity.svg";
 interface FoodProps {
   name: string;
   cathegory: string;
@@ -42,13 +40,32 @@ const Food: React.FC<FoodProps> = ({
         </button>
         <div className="quantity-controls">
           <button className="food-item__button decrement">
-            <img src={decrementButton} alt="Decrement" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="2"
+              fill="none"
+              viewBox="0 0 10 2"
+            >
+              <path fill="currentColor" d="M0 .375h10v1.25H0V.375Z" />
+            </svg>
           </button>
 
           <p>4</p>
 
           <button className="food-item__button increment">
-            <img src={incrementButton} alt="Increment" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="10"
+              fill="none"
+              viewBox="0 0 10 10"
+            >
+              <path
+                fill="currentColor"
+                d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+              />
+            </svg>
           </button>
         </div>
       </div>
