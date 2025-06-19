@@ -47,6 +47,9 @@ body {
   gap: 10px;
 }
 
+.food-item {
+  margin-top: 1rem;
+}
 .btn {
   display: flex;
   flex-direction: row;
