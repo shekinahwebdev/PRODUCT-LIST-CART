@@ -4,6 +4,7 @@ import Food from "./Food";
 const FoodContainer = () => {
   return (
     <section className="food_section">
+      <h1 className="main_heading">Desserts</h1>
       {data.map((food, index) => (
         <Food
           key={index}
