@@ -25,6 +25,9 @@ const Food: React.FC<FoodProps> = ({
     setIsAdded(true);
   };
 
+  const handleDecrement = () => {};
+  const handleIncrement = () => {};
+
   return (
     <div className="food-item">
       <picture>
@@ -53,7 +56,10 @@ const Food: React.FC<FoodProps> = ({
           </button>
         ) : (
           <div className="quantity-controls">
-            <button className="food-item__button decrement">
+            <button
+              className="food-item__button decrement"
+              onChange={handleDecrement}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10"
@@ -67,7 +73,10 @@ const Food: React.FC<FoodProps> = ({
 
             <p>0</p>
 
-            <button className="food-item__button increment">
+            <button
+              className="food-item__button increment"
+              onChange={handleIncrement}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10"
