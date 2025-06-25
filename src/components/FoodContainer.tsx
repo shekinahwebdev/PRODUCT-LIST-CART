@@ -1,5 +1,7 @@
 import data from "../data/data.json";
+import { EmptyPage } from "./EmptyPage";
 import Food from "./Food";
+import { SelectedFoodPage } from "./SelectedFoodPage";
 
 const FoodContainer = () => {
   return (
@@ -17,6 +19,8 @@ const FoodContainer = () => {
           desktopImage={food.image.desktop}
         />
       ))}
+      <SelectedFoodPage />
+      <EmptyPage />
     </section>
   );
 };

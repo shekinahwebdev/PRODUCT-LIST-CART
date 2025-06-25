@@ -152,3 +152,30 @@ body {
 .food-item__image.highlight {
   border: 2px solid var(--Red);
 }
+
+.main_cart {
+  margin-top: 1rem;
+  background-color: var(--Rose-50);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.current_cart {
+  font-size: 1.5rem;
+  color: var(--Red);
+  font-weight: 700;
+}
+
+.cart_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0rem;
+}
+
+.cart_center p {
+  color: var(--Rose-900);
+  font-weight: 500;
+  margin-top: 1rem;
+}
