@@ -20,13 +20,23 @@ const Food: React.FC<FoodProps> = ({
   thumbnail,
 }) => {
   const [isAdded, setIsAdded] = useState(false);
+  const [count, setCount] = useState(1);
 
   const handleAddtoCart = () => {
     setIsAdded(true);
   };
 
-  const handleDecrement = () => {};
-  const handleIncrement = () => {};
+  const handleDecrement = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+    if (count === 1) {
+      setIsAdded(false);
+    }
+  };
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
 
   return (
     <div className="food-item">
@@ -58,7 +68,7 @@ const Food: React.FC<FoodProps> = ({
           <div className="quantity-controls">
             <button
               className="food-item__button decrement"
-              onChange={handleDecrement}
+              onClick={handleDecrement}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -71,11 +81,11 @@ const Food: React.FC<FoodProps> = ({
               </svg>
             </button>
 
-            <p>0</p>
+            <p>{count}</p>
 
             <button
               className="food-item__button increment"
-              onChange={handleIncrement}
+              onClick={handleIncrement}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
