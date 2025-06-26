@@ -5,7 +5,7 @@ export const SelectedFoodPage = () => {
     <main className="selected-food-page">
       <h1 className="selected-food-page__title">Your Cart(7)</h1>
       <div className="food-selected">
-        <p>Classic Tiramisu</p>
+        <p>Classic Tiramiss</p>
         <div>
           <span className="selected-food-number">1x</span>
           <span className="selected-food-price">$5.50</span>
