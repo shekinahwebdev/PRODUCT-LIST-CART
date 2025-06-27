@@ -8,6 +8,12 @@ interface FoodProps {
   tabletImage: string;
   desktopImage: string;
   thumbnail: string;
+  onSelect?: (
+    name: string,
+    price: number,
+    foodCount: number,
+    cathegory: string
+  ) => void;
 }
 
 const Food: React.FC<FoodProps> = ({
@@ -18,12 +24,14 @@ const Food: React.FC<FoodProps> = ({
   tabletImage,
   desktopImage,
   thumbnail,
+  onSelect,
 }) => {
   const [isAdded, setIsAdded] = useState(false);
   const [count, setCount] = useState(1);
 
   const handleAddtoCart = () => {
     setIsAdded(true);
+    onSelect?.(name, price, count, cathegory);
   };
 
   const handleDecrement = () => {
