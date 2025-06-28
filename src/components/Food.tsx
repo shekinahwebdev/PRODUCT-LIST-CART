@@ -37,6 +37,7 @@ const Food: React.FC<FoodProps> = ({
   const handleDecrement = () => {
     if (count > 1) {
       setCount(count - 1);
+      onSelect?.(name, price, count, cathegory);
     }
     if (count === 1) {
       setIsAdded(false);
@@ -44,6 +45,7 @@ const Food: React.FC<FoodProps> = ({
   };
   const handleIncrement = () => {
     setCount(count + 1);
+    onSelect?.(name, price, count, cathegory);
   };
 
   return (

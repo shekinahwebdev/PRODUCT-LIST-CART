@@ -6,6 +6,7 @@ interface FoodItem {
   name: string;
   price: number;
   foodCount: number;
+  count: number;
 }
 
 interface SelectedFoodPageProps {
@@ -15,15 +16,16 @@ interface SelectedFoodPageProps {
 export const SelectedFoodPage: React.FC<SelectedFoodPageProps> = ({
   selectedFoods,
 }) => {
+  const totalFood = selectedFoods.length;
   return (
     <main className="selected-food-page">
-      <h1 className="selected-food-page__title">Your Cart(0)</h1>
+      <h1 className="selected-food-page__title">Your Cart({totalFood})</h1>
       {selectedFoods.map((food, index) => (
         <div className="food-selected" key={index}>
           <div className="selected-food-left">
             <p>{food.name}</p>
             <div className="food-price-section">
-              <span className="selected-food-number">{food.foodCount}x</span>
+              <span className="selected-food-number">{food.count}x</span>
               <span className="selected-food-price">
                 @{food.price.toFixed(2)}
               </span>

@@ -1,83 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import data from "../data/data.json";
-import foodItems from "../data/foodItem";
 import { EmptyPage } from "./EmptyPage";
 import Food from "./Food";
 import { SelectedFoodPage } from "./SelectedFoodPage";
 
 const FoodContainer = () => {
-  const [selectedFood, setSelectedFood] = useState([
-    {
-      cathegory: "Waffle",
-      name: "Waffle with Berries",
-      price: 6.5,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-    {
-      cathegory: "Waffle",
-      name: "Waffle with Berries",
-      price: 6.5,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-    {
-      cathegory: "Crème Brûlée",
-      name: "Vanilla Bean Crème Brûlée",
-      price: 7.0,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-    {
-      cathegory: "Macaron",
-      name: "Macaron Mix of Five",
-      price: 8.0,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-    {
-      cathegory: "Tiramisu",
-      name: "Classic Tiramisu",
-      price: 5.5,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-    {
-      cathegory: "Baklava",
-      name: "Pistachio Baklava",
-      price: 4.0,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-    {
-      cathegory: "Pie",
-      name: "Lemon Meringue Pie",
-      price: 5.0,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-    {
-      cathegory: "Cake",
-      name: "Red Velvet Cake",
-      price: 4.5,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-    {
-      cathegory: "Brownie",
-      name: "Salted Caramel Brownie",
-      price: 5.5,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-    {
-      cathegory: "Panna Cotta",
-      name: "Vanilla Panna Cotta",
-      price: 6.5,
-      foodCount: 0,
-      // foodSum: 0,
-    },
-  ]);
+  const [selectedFood, setSelectedFoods] = useState<FoodItem[]>([]);
+
+  useEffect(() => {
+    console.log("Selected Foods changed:", selectedFood);
+  }, [selectedFood]);
+  interface FoodItem {
+    name: string;
+    price: number;
+    count: number;
+    cathegory: string;
+    foodCount: number;
+  }
 
   // Function to handleSelectFood
   const handleSelectedFood = (
@@ -86,21 +25,28 @@ const FoodContainer = () => {
     foodCount: number,
     cathegory: string
   ) => {
-    setSelectedFood((prev) =>
-      prev.map((food) =>
-        food.name === name
-          ? {
-              ...food,
-              foodCount: foodCount,
-              name: name,
-              price: price,
-              cathegory: cathegory,
-            }
-          : food
-      )
-    );
-  };
+    setSelectedFoods((prevSelectedFoods) => {
+      const index = prevSelectedFoods.findIndex((item) => item.name === name);
 
+      if (index !== -1 && foodCount > 0) {
+        const updatedFoods = [...prevSelectedFoods];
+        updatedFoods[index].count = foodCount;
+        return updatedFoods;
+      }
+
+      if (index !== -1 && foodCount === 0) {
+        return prevSelectedFoods.filter((item) => item.name !== name);
+      }
+
+      if (index === -1 && foodCount > 0) {
+        return [
+          ...prevSelectedFoods,
+          { name, count: foodCount, price, cathegory, foodCount },
+        ];
+      }
+      return prevSelectedFoods;
+    });
+  };
   return (
     <section className="food_section">
       <h1 className="main_heading">Desserts</h1>
