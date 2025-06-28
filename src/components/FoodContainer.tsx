@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import data from "../data/data.json";
 import { EmptyPage } from "./EmptyPage";
 import Food from "./Food";
@@ -6,10 +6,6 @@ import { SelectedFoodPage } from "./SelectedFoodPage";
 
 const FoodContainer = () => {
   const [selectedFood, setSelectedFoods] = useState<FoodItem[]>([]);
-
-  useEffect(() => {
-    console.log("Selected Foods changed:", selectedFood);
-  }, [selectedFood]);
   interface FoodItem {
     name: string;
     price: number;
