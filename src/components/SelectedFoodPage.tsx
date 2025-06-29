@@ -1,5 +1,6 @@
 import removeIcon from "/assets/images/icon-remove-item.svg";
 import carbonIcon from "/assets/images/icon-carbon-neutral.svg";
+import foodItems from "../data/foodItem";
 
 interface FoodItem {
   cathegory: string;
@@ -12,10 +13,12 @@ interface FoodItem {
 interface SelectedFoodPageProps {
   selectedFoods: FoodItem[];
   totalFood: number;
+  handleRemoveItem: (indexToRemove: number) => void;
 }
 
 export const SelectedFoodPage: React.FC<SelectedFoodPageProps> = ({
   selectedFoods,
+  handleRemoveItem,
   totalFood,
 }) => {
   totalFood = totalFood + selectedFoods.length;
@@ -36,14 +39,22 @@ export const SelectedFoodPage: React.FC<SelectedFoodPageProps> = ({
               </span>
             </div>
           </div>
-          <button className="selected-food-remove">
+          <button
+            className="selected-food-remove"
+            onClick={() => handleRemoveItem(index)}
+          >
             <img src={removeIcon} alt="Remove item" />
           </button>
         </div>
       ))}
       <div className="total-price">
         <p>Order Total</p>
-        <span>$46.50</span>
+        <span>
+          $
+          {selectedFoods
+            .reduce((total, food) => total + food.price * food.count, 0)
+            .toFixed(2)}
+        </span>
       </div>
 
       <div className="food-information">
