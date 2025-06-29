@@ -11,12 +11,14 @@ interface FoodItem {
 
 interface SelectedFoodPageProps {
   selectedFoods: FoodItem[];
+  totalFood: number;
 }
 
 export const SelectedFoodPage: React.FC<SelectedFoodPageProps> = ({
   selectedFoods,
+  totalFood,
 }) => {
-  const totalFood = selectedFoods.length;
+  totalFood = totalFood + selectedFoods.length;
   return (
     <main className="selected-food-page">
       <h1 className="selected-food-page__title">Your Cart({totalFood})</h1>

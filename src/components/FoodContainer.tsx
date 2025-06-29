@@ -6,6 +6,11 @@ import { SelectedFoodPage } from "./SelectedFoodPage";
 
 const FoodContainer = () => {
   const [selectedFood, setSelectedFoods] = useState<FoodItem[]>([]);
+  const [totalFood, setTotalFood] = useState(0);
+
+  const updatedTotalFood = (change: number) => {
+    setTotalFood((prevTotal) => prevTotal + change);
+  };
   interface FoodItem {
     name: string;
     price: number;
@@ -27,6 +32,8 @@ const FoodContainer = () => {
       if (index !== -1 && foodCount > 0) {
         const updatedFoods = [...prevSelectedFoods];
         updatedFoods[index].count = foodCount;
+        console.log(updatedFoods);
+
         return updatedFoods;
       }
 
@@ -57,9 +64,10 @@ const FoodContainer = () => {
           tabletImage={food.image.tablet}
           desktopImage={food.image.desktop}
           onSelect={handleSelectedFood}
+          updatedTotalFood={updatedTotalFood}
         />
       ))}
-      <SelectedFoodPage selectedFoods={selectedFood} />
+      <SelectedFoodPage selectedFoods={selectedFood} totalFood={totalFood} />
       <EmptyPage />
     </section>
   );

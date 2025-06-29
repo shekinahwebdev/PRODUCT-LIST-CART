@@ -8,6 +8,7 @@ interface FoodProps {
   tabletImage: string;
   desktopImage: string;
   thumbnail: string;
+  updatedTotalFood: (change: number) => void;
   onSelect?: (
     name: string,
     price: number,
@@ -24,6 +25,7 @@ const Food: React.FC<FoodProps> = ({
   tabletImage,
   desktopImage,
   thumbnail,
+  updatedTotalFood,
   onSelect,
 }) => {
   const [isAdded, setIsAdded] = useState(false);
@@ -37,7 +39,8 @@ const Food: React.FC<FoodProps> = ({
   const handleDecrement = () => {
     if (count > 1) {
       setCount(count - 1);
-      onSelect?.(name, price, count, cathegory);
+      onSelect?.(name, price, count - 1, cathegory);
+      updatedTotalFood(-1);
     }
     if (count === 1) {
       setIsAdded(false);
@@ -45,7 +48,8 @@ const Food: React.FC<FoodProps> = ({
   };
   const handleIncrement = () => {
     setCount(count + 1);
-    onSelect?.(name, price, count, cathegory);
+    onSelect?.(name, price, count + 1, cathegory);
+    updatedTotalFood(+1);
   };
 
   return (
