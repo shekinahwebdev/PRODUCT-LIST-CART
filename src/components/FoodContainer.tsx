@@ -11,6 +11,13 @@ const FoodContainer = () => {
   const updatedTotalFood = (change: number) => {
     setTotalFood((prevTotal) => prevTotal + change);
   };
+
+  const handleRemoveItem = (indexToRemove: number) => {
+    setSelectedFoods(
+      selectedFood.filter((_, index) => index !== indexToRemove)
+    );
+  };
+
   interface FoodItem {
     name: string;
     price: number;
@@ -67,8 +74,15 @@ const FoodContainer = () => {
           updatedTotalFood={updatedTotalFood}
         />
       ))}
-      <SelectedFoodPage selectedFoods={selectedFood} totalFood={totalFood} />
-      <EmptyPage />
+      {selectedFood.length === 0 ? (
+        <EmptyPage />
+      ) : (
+        <SelectedFoodPage
+          selectedFoods={selectedFood}
+          totalFood={totalFood}
+          handleRemoveItem={handleRemoveItem}
+        />
+      )}
     </section>
   );
 };
