@@ -155,7 +155,7 @@ body {
 
 .main_cart {
   margin-top: 1rem;
-  background-color: var(--Rose-50);
+  background-color: white;
   padding: 1.5rem;
   border-radius: 10px;
 }
