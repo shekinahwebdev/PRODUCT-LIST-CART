@@ -60,20 +60,25 @@ const FoodContainer = () => {
   return (
     <section className="food_section">
       <h1 className="main_heading">Desserts</h1>
-      {data.map((food, index) => (
-        <Food
-          key={index}
-          name={food.name}
-          cathegory={food.category}
-          price={food.price}
-          thumbnail={food.image.thumbnail}
-          mobileImage={food.image.mobile}
-          tabletImage={food.image.tablet}
-          desktopImage={food.image.desktop}
-          onSelect={handleSelectedFood}
-          updatedTotalFood={updatedTotalFood}
-        />
-      ))}
+      {data.map((food, index) => {
+        const isSelected = selectedFood.some((item) => item.name === food.name);
+
+        return (
+          <Food
+            key={index}
+            name={food.name}
+            cathegory={food.category}
+            price={food.price}
+            thumbnail={food.image.thumbnail}
+            mobileImage={food.image.mobile}
+            tabletImage={food.image.tablet}
+            desktopImage={food.image.desktop}
+            onSelect={handleSelectedFood}
+            updatedTotalFood={updatedTotalFood}
+            isSelected={isSelected} // ✅ highlight control
+          />
+        );
+      })}
       {selectedFood.length === 0 ? (
         <EmptyPage />
       ) : (

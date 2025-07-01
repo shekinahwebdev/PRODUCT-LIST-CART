@@ -1,6 +1,5 @@
 import removeIcon from "/assets/images/icon-remove-item.svg";
 import carbonIcon from "/assets/images/icon-carbon-neutral.svg";
-import foodItems from "../data/foodItem";
 
 interface FoodItem {
   cathegory: string;

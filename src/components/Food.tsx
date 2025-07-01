@@ -8,6 +8,7 @@ interface FoodProps {
   tabletImage: string;
   desktopImage: string;
   thumbnail: string;
+  isSelected: boolean;
   updatedTotalFood: (change: number) => void;
   onSelect?: (
     name: string,
@@ -25,14 +26,13 @@ const Food: React.FC<FoodProps> = ({
   tabletImage,
   desktopImage,
   thumbnail,
+  isSelected,
   updatedTotalFood,
   onSelect,
 }) => {
-  const [isAdded, setIsAdded] = useState(false);
   const [count, setCount] = useState(1);
 
   const handleAddtoCart = () => {
-    setIsAdded(true);
     onSelect?.(name, price, count, cathegory);
   };
 
@@ -41,9 +41,9 @@ const Food: React.FC<FoodProps> = ({
       setCount(count - 1);
       onSelect?.(name, price, count - 1, cathegory);
       updatedTotalFood(-1);
-    }
-    if (count === 1) {
-      setIsAdded(false);
+    } else if (count === 1) {
+      onSelect?.(name, price, 0, cathegory);
+      updatedTotalFood(-1);
     }
   };
   const handleIncrement = () => {
@@ -64,12 +64,12 @@ const Food: React.FC<FoodProps> = ({
         <img
           src={thumbnail}
           alt={name}
-          className={`food-item__image ${isAdded ? "highlight" : ""}`}
+          className={`food-item__image ${isSelected ? "highlight" : ""}`}
         />
       </picture>
 
       <div className={"food-item__add-section"}>
-        {!isAdded ? (
+        {!isSelected ? (
           <button className="add-section btn" onClick={handleAddtoCart}>
             <img
               src={addToCart}
