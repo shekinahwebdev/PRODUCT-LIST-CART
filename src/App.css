@@ -111,6 +111,9 @@ body {
   cursor: pointer;
   background-color: var(--Red);
 }
+.add_cart {
+  color: var(--Rose-900);
+}
 
 .increment {
   margin-left: 1rem;

@@ -65,7 +65,6 @@ const FoodContainer = () => {
           const isSelected = selectedFood.some(
             (item) => item.name === food.name
           );
-
           return (
             <Food
               key={index}

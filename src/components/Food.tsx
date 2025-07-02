@@ -76,7 +76,7 @@ const Food: React.FC<FoodProps> = ({
               alt="Added to Cart"
               className="food-item__add-icon"
             />
-            <p>Add to Cart</p>
+            <p className="add_cart">Add to Cart</p>
           </button>
         ) : (
           <div className="quantity-controls">
