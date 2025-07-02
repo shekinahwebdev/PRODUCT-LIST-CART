@@ -2,7 +2,7 @@ import FoodContainer from "./components/FoodContainer";
 
 const App = () => {
   return (
-    <main>
+    <main className="main_container">
       <FoodContainer />
     </main>
   );
