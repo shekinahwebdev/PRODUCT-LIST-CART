@@ -14,7 +14,8 @@ interface FoodProps {
     name: string,
     price: number,
     foodCount: number,
-    cathegory: string
+    cathegory: string,
+    thumbnail: string
   ) => void;
 }
 
@@ -33,22 +34,22 @@ const Food: React.FC<FoodProps> = ({
   const [count, setCount] = useState(1);
 
   const handleAddtoCart = () => {
-    onSelect?.(name, price, count, cathegory);
+    onSelect?.(name, price, count, cathegory, thumbnail);
   };
 
   const handleDecrement = () => {
     if (count > 1) {
       setCount(count - 1);
-      onSelect?.(name, price, count - 1, cathegory);
+      onSelect?.(name, price, count - 1, cathegory, thumbnail);
       updatedTotalFood(-1);
     } else if (count === 1) {
-      onSelect?.(name, price, 0, cathegory);
+      onSelect?.(name, price, 0, cathegory, thumbnail);
       updatedTotalFood(-1);
     }
   };
   const handleIncrement = () => {
     setCount(count + 1);
-    onSelect?.(name, price, count + 1, cathegory);
+    onSelect?.(name, price, count + 1, cathegory, thumbnail);
     updatedTotalFood(+1);
   };
 

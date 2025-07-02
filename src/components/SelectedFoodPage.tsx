@@ -1,3 +1,4 @@
+import "/src/components/SelectedFoodPage.css";
 import removeIcon from "/assets/images/icon-remove-item.svg";
 import carbonIcon from "/assets/images/icon-carbon-neutral.svg";
 
@@ -13,11 +14,13 @@ interface SelectedFoodPageProps {
   selectedFoods: FoodItem[];
   totalFood: number;
   handleRemoveItem: (indexToRemove: number) => void;
+  handleConfirmation: () => void;
 }
 
 export const SelectedFoodPage: React.FC<SelectedFoodPageProps> = ({
   selectedFoods,
   handleRemoveItem,
+  handleConfirmation,
   totalFood,
 }) => {
   totalFood = totalFood + selectedFoods.length;
@@ -63,7 +66,11 @@ export const SelectedFoodPage: React.FC<SelectedFoodPageProps> = ({
         </p>
       </div>
 
-      <button aria-label="Confirm Order" className="confirm-order-button">
+      <button
+        aria-label="Confirm Order"
+        className="confirm-order-button"
+        onClick={handleConfirmation}
+      >
         Confirm Order
       </button>
     </main>

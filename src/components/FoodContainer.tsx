@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "../data/data.json";
 import { EmptyPage } from "./EmptyPage";
 import Food from "./Food";
@@ -8,6 +8,8 @@ import { ConfirmationPage } from "./ConfirmationPage";
 const FoodContainer = () => {
   const [selectedFood, setSelectedFoods] = useState<FoodItem[]>([]);
   const [totalFood, setTotalFood] = useState(0);
+
+  const [isPressed, setIsPressed] = useState(false);
 
   const updatedTotalFood = (change: number) => {
     setTotalFood((prevTotal) => prevTotal + change);
@@ -19,12 +21,23 @@ const FoodContainer = () => {
     );
   };
 
+  const handleConfirmation = () => {
+    setIsPressed((prev) => !prev);
+  };
+
+  const handleRestartOrder = () => {
+    setSelectedFoods([]);
+    setTotalFood(0);
+    window.location.reload();
+  };
+
   interface FoodItem {
     name: string;
     price: number;
     count: number;
     cathegory: string;
     foodCount: number;
+    thumbnail: string;
   }
 
   // Function to handleSelectFood
@@ -32,8 +45,8 @@ const FoodContainer = () => {
     name: string,
     price: number,
     foodCount: number,
-    cathegory: string
-    // thumbnail: string
+    cathegory: string,
+    thumbnail: string
   ) => {
     setSelectedFoods((prevSelectedFoods) => {
       const index = prevSelectedFoods.findIndex((item) => item.name === name);
@@ -51,7 +64,7 @@ const FoodContainer = () => {
       if (index === -1 && foodCount > 0) {
         return [
           ...prevSelectedFoods,
-          { name, count: foodCount, price, cathegory, foodCount },
+          { name, count: foodCount, price, cathegory, foodCount, thumbnail },
         ];
       }
       return prevSelectedFoods;
@@ -89,10 +102,18 @@ const FoodContainer = () => {
           selectedFoods={selectedFood}
           totalFood={totalFood}
           handleRemoveItem={handleRemoveItem}
+          handleConfirmation={handleConfirmation}
         />
       )}
 
-      <ConfirmationPage selectedFoods={selectedFood} totalFood={totalFood} />
+      {isPressed ? (
+        <ConfirmationPage
+          selectedFoods={selectedFood}
+          totalFood={totalFood}
+          handleRestartOrder={handleRestartOrder}
+        />
+      ) : null}
+      {/* <ConfirmationPage selectedFoods={selectedFood} totalFood={totalFood} /> */}
     </section>
   );
 };
