@@ -3,6 +3,7 @@ import data from "../data/data.json";
 import { EmptyPage } from "./EmptyPage";
 import Food from "./Food";
 import { SelectedFoodPage } from "./SelectedFoodPage";
+import { ConfirmationPage } from "./ConfirmationPage";
 
 const FoodContainer = () => {
   const [selectedFood, setSelectedFoods] = useState<FoodItem[]>([]);
@@ -32,6 +33,7 @@ const FoodContainer = () => {
     price: number,
     foodCount: number,
     cathegory: string
+    // thumbnail: string
   ) => {
     setSelectedFoods((prevSelectedFoods) => {
       const index = prevSelectedFoods.findIndex((item) => item.name === name);
@@ -39,8 +41,6 @@ const FoodContainer = () => {
       if (index !== -1 && foodCount > 0) {
         const updatedFoods = [...prevSelectedFoods];
         updatedFoods[index].count = foodCount;
-        console.log(updatedFoods);
-
         return updatedFoods;
       }
 
@@ -77,7 +77,7 @@ const FoodContainer = () => {
               desktopImage={food.image.desktop}
               onSelect={handleSelectedFood}
               updatedTotalFood={updatedTotalFood}
-              isSelected={isSelected} // ✅ highlight control
+              isSelected={isSelected}
             />
           );
         })}
@@ -91,6 +91,8 @@ const FoodContainer = () => {
           handleRemoveItem={handleRemoveItem}
         />
       )}
+
+      <ConfirmationPage selectedFoods={selectedFood} totalFood={totalFood} />
     </section>
   );
 };
