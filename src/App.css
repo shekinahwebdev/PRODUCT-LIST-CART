@@ -29,7 +29,7 @@ body {
 }
 
 .main_heading {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--Rose-900);
 }
 
@@ -61,7 +61,7 @@ body {
   flex-direction: row;
   justify-content: center;
   gap: 10px;
-  padding: 1.1rem 4rem;
+  padding: 1.1rem 3rem;
   border-radius: 50px;
   cursor: pointer;
   border: none;
@@ -297,24 +297,101 @@ body {
   cursor: pointer;
 }
 
-@media screen and (min-width: 1000px) {
-  .main_container {
-    border: 2px solid blue;
+@media screen and (min-width: 700px) and (max-width: 1148px) {
+  .main_food_page {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+    flex: 1;
+  }
+
+  .food-item {
+    width: 100%;
+    max-width: 400px;
     position: relative;
+  }
+}
+
+@media screen and (min-width: 1111px) and (max-width: 1149px) {
+  .main_food_page {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+    flex: 1;
+  }
+
+  .food-item {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+  }
+
+  .main_cart {
+    width: 400px;
+    padding: 2rem;
+    position: absolute;
+    top: 1550px;
+    right: 370px;
+  }
+
+  .selected-food-page {
+    width: 365px;
+    position: absolute;
+    top: 1550px;
+    right: 370px;
+  }
+}
+
+@media screen and (min-width: 1153px) and (max-width: 1354px) {
+  .main_food_page {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    flex: 1;
+  }
+
+  .food-item {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+  }
+
+  .main_cart {
+    width: 355px;
+    padding: 2rem;
+    position: absolute;
+    top: 1655px;
+    right: 450px;
+  }
+
+  .selected-food-page {
+    width: 365px;
+    position: absolute;
+    top: 1655px;
+    right: 450px;
+  }
+
+  .btn {
+    right: 20%;
+  }
+}
+
+@media screen and (min-width: 1355px) {
+  .main_container {
     padding: 1.5rem;
   }
 
   .food-item {
-    border: 2px solid red;
     width: 100%;
     max-width: 400px;
+    position: relative;
   }
 
   .main_food_page {
-    /* border: 2px solid black; */
     display: grid;
     grid-template-columns: repeat(3, 400px);
-    gap: 2rem;
+    gap: 2.5rem;
+    flex: 1;
   }
 
   .main_cart {
@@ -333,6 +410,22 @@ body {
   }
 
   .btn {
-    display: none;
+    right: 25%;
+  }
+
+  .item_class,
+  .food-item__category {
+    font-size: 1.2rem;
+  }
+
+  .empty-cart {
+    width: 160px;
+  }
+
+  .selected-food-page {
+    width: 450px;
+    position: absolute;
+    top: 20px;
+    right: 40px;
   }
 }
