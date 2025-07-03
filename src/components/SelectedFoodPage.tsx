@@ -34,7 +34,7 @@ export const SelectedFoodPage: React.FC<SelectedFoodPageProps> = ({
             <div className="food-price-section">
               <span className="selected-food-number">{food.count}x</span>
               <span className="selected-food-price">
-                @{food.price.toFixed(2)}
+                @ ${food.price.toFixed(2)}
               </span>
               <span className="selected-food-total-price">
                 ${(food.price * food.count).toFixed(2)}
