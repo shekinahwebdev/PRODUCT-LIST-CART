@@ -40,7 +40,7 @@ export const ConfirmationPage: React.FC<ConfirmationPageProps> = ({
                   <div className="confirmed-food-price-section">
                     <span className="selected-food-number">{food.count}x</span>
                     <span className="selected-food-price">
-                      @{food.price.toFixed(2)}
+                      @ ${food.price.toFixed(2)}
                     </span>
                   </div>
                 </div>
