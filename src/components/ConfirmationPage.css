@@ -1,5 +1,5 @@
 .confirmation_page {
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 2rem 1.4rem;
   background-color: white;
   display: flex;
@@ -49,12 +49,18 @@
 .confirm-food-bottom {
   display: flex;
   flex-direction: column;
+  max-width: 300px;
 }
 
 .confirm-food-bottom p {
   color: var(--Rose-900);
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+  display: block;
 }
 
 .confirmed-food-price-section {
@@ -73,6 +79,7 @@
 .selected-food-total-price {
   font-size: 1.2rem;
   color: var(--Rose-900);
+  font-weight: 500;
 }
 
 .confirmation-total-price {
@@ -121,11 +128,28 @@
   align-items: center;
 }
 
+@media screen and (min-width: 500px) {
+  .confirm-food-bottom p {
+    max-width: none;
+    min-width: none;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+  }
+}
+
 @media screen and (min-width: 700px) and (max-width: 1354px) {
   .confirmation_page {
     top: 35%;
     width: 600px;
     padding: 2rem;
+  }
+
+  .confirm-food-bottom p {
+    max-width: none;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
   }
 }
 
