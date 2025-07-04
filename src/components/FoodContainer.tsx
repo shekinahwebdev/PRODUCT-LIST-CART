@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import data from "../data/data.json";
 import { EmptyPage } from "./EmptyPage";
 import Food from "./Food";
